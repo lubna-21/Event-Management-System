@@ -1,0 +1,62 @@
+﻿@model BLL.DTOs.BookingDTO
+
+<style>
+    @@media print {
+        .no-print { display: none; }
+    }
+</style>
+
+<div class="no-print mb-3">
+    <a asp-action="MyBookings" class="btn btn-secondary">Back to My Bookings</a>
+    <button onclick="window.print()" class="btn btn-primary">🖨️ Print Receipt</button>
+</div>
+
+<div class="card p-4" style="max-width:600px; margin:auto;">
+    <h2 class="text-center mb-3">🎉 Booking Receipt</h2>
+    <hr />
+    <table class="table table-borderless">
+        <tr>
+            <th>Booking Id</th>
+            <td>#@Model.Id</td>
+        </tr>
+        <tr>
+            <th>Event</th>
+            <td>@Model.EventCategoryName</td>
+        </tr>
+        <tr>
+            <th>Booked By</th>
+            <td>@Model.UserName</td>
+        </tr>
+        <tr>
+            <th>Seat Count</th>
+            <td>@Model.SeatCount</td>
+        </tr>
+        <tr>
+            <th>Price per Seat</th>
+            <td>@Model.EventPrice</td>
+        </tr>
+        <tr>
+            <th>Total Price</th>
+            <td><strong>@Model.TotalPrice</strong></td>
+        </tr>
+        <tr>
+            <th>Booking Date</th>
+            <td>@Model.BookingDate.ToString("dd MMM yyyy, hh:mm tt")</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>
+                @if (Model.Status == "Pending")
+                {
+                    <span style="color:orange"><strong>⏳ Pending</strong></span>
+                }
+                else if (Model.Status == "Confirmed")
+                {
+                    <span style="color:green"><strong>✅ Confirmed</strong></span>
+                }
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <p class="text-center text-muted">Thank you for booking with us!</p>
+</div>

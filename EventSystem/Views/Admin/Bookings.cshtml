@@ -1,0 +1,52 @@
+﻿@model List<BLL.DTOs.BookingDTO>
+<h1>All Bookings</h1>
+<hr />
+<a asp-action="Dashboard" class="btn btn-secondary mb-3">Back to Dashboard</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>User</th>
+            <th>Event</th>
+            <th>Seats</th>
+            <th>Total Price</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.UserName</td>
+                <td>@item.EventCategoryName</td>
+                <td>@item.SeatCount</td>
+                <td>@item.TotalPrice</td>
+                <td>@item.BookingDate.ToString("dd MMM yyyy")</td>
+                <td>
+                    @if (item.Status == "Pending")
+                    {
+                        <span style="color:orange"><strong>⏳ Pending</strong></span>
+                    }
+                    else if (item.Status == "Confirmed")
+                    {
+                        <span style="color:green"><strong>✅ Confirmed</strong></span>
+                    }
+                </td>
+                <td>
+                    @if (item.Status == "Pending")
+                    {
+                        <a href="/Admin/ConfirmBooking/@item.Id" class="btn btn-success btn-sm">Confirm</a>
+                        <a href="/Admin/CancelBooking/@item.Id" class="btn btn-danger btn-sm">Cancel</a>
+                    }
+                    else if (item.Status == "Confirmed")
+                    {
+                        <a href="/Admin/DeleteBooking/@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

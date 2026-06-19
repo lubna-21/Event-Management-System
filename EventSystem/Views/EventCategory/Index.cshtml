@@ -1,0 +1,55 @@
+﻿@model List<BLL.DTOs.EventCategoryDTO>
+
+<h2>🎉 Welcome, <strong>@ViewBag.UserName</strong> !</h2>
+<hr />
+<a asp-controller="User" asp-action="Dashboard" class="btn btn-primary">Dashboard</a>
+<a asp-controller="User" asp-action="Logout" class="btn btn-danger">Logout</a>
+
+<h1>Available Events</h1>
+<hr />
+
+<form method="get" asp-action="Index" class="row g-2 mb-3">
+    <div class="col-auto">
+        <input type="text" name="searchName" value="@ViewBag.SearchName" class="form-control" placeholder="Search by event name" />
+    </div>
+    <div class="col-auto">
+        <input type="number" name="minPrice" value="@ViewBag.MinPrice" class="form-control" placeholder="Min price" />
+    </div>
+    <div class="col-auto">
+        <input type="number" name="maxPrice" value="@ViewBag.MaxPrice" class="form-control" placeholder="Max price" />
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Search</button>
+        <a asp-action="Index" class="btn btn-secondary">Clear</a>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Event Name</th>
+            <th>Price per Seat</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td>
+                    <a href="/EventCategory/Book/@item.Id">Book Now</a>
+                </td>
+            </tr>
+        }
+        @if (!Model.Any())
+        {
+            <tr>
+                <td colspan="4" class="text-center">No events found matching your search.</td>
+            </tr>
+        }
+    </tbody>
+</table>

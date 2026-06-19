@@ -1,0 +1,9 @@
+﻿@model BLL.DTOs.EventCategoryDTO
+<h1>Are you sure to Delete?</h1>
+<h3>@Model.Name</h3>
+<h3>Price: @Model.Price</h3>
+<form method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <input type="submit" name="Decision" value="Yes" class="btn btn-danger" />
+    <input type="submit" name="Decision" value="No" class="btn btn-primary" />
+</form>

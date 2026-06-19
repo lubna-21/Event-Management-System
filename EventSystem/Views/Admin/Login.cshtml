@@ -1,0 +1,20 @@
+﻿@model BLL.DTOs.AdminDTO
+<h1>Admin Login</h1>
+<hr />
+@if (ViewBag.Error != null)
+{
+    <p style="color:red">@ViewBag.Error</p>
+}
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Email" class="control-label"></label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" class="control-label"></label>
+        <input asp-for="Password" type="password" class="form-control" />
+    </div>
+    <div class="form-group mt-2">
+        <input type="submit" value="Login" class="btn btn-primary" />
+    </div>
+</form>

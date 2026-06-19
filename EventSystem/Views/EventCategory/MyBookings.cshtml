@@ -1,0 +1,53 @@
+﻿@model List<BLL.DTOs.BookingDTO>
+<h1>My Bookings</h1>
+<hr />
+<p>
+    <a asp-action="Index">Browse Events</a> |
+    <a asp-controller="User" asp-action="Logout">Logout</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Event</th>
+            <th>Seats</th>
+            <th>Total Price</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.EventCategoryName</td>
+                <td>@item.SeatCount</td>
+                <td>@item.TotalPrice</td>
+                <td>@item.BookingDate.ToString("dd MMM yyyy")</td>
+                <td>
+                    @if (item.Status == "Pending")
+                    {
+                        <span style="color:orange"><strong>⏳ Pending</strong></span>
+                    }
+                    else if (item.Status == "Confirmed")
+                    {
+                        <span style="color:green"><strong>✅ Confirmed</strong></span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Invoice" asp-route-id="@item.Id">🧾 Receipt</a>
+                    @if (item.Status == "Pending")
+                    {
+                        <br />
+                        <a asp-action="CancelBooking" asp-route-id="@item.Id"
+                               onclick="return confirm('Are you sure you want to cancel this booking?');">
+                            ❌ Cancel
+                        </a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

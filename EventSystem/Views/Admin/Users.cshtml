@@ -1,0 +1,28 @@
+﻿@model List<BLL.DTOs.UserDTO>
+<h1>All Users</h1>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.FullName</td>
+                <td>@item.Email</td>
+                <td>
+                    <a href="/Admin/EditUser/@item.Id">Edit</a> |
+                    <a href="/Admin/DeleteUser/@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Dashboard">Back to Dashboard</a>

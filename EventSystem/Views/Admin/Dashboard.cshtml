@@ -1,0 +1,21 @@
+﻿<h1>Admin Dashboard</h1>
+<hr />
+<table class="table">
+    <tr>
+        <td>Total Users</td>
+        <td><strong>@ViewBag.TotalUsers</strong></td>
+    </tr>
+    <tr>
+        <td>Total Events</td>
+        <td><strong>@ViewBag.TotalEvents</strong></td>
+    </tr>
+    <tr>
+        <td>Total Bookings</td>
+        <td><strong>@ViewBag.TotalBookings</strong></td>
+    </tr>
+</table>
+<hr />
+<a asp-action="EventCategories" class="btn btn-primary">Manage Events</a>
+<a asp-action="Users" class="btn btn-primary">Manage Users</a>
+<a asp-action="Bookings" class="btn btn-primary">View Bookings</a>
+<a asp-action="Logout" class="btn btn-danger">Logout</a>

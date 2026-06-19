@@ -1,0 +1,27 @@
+﻿@model BLL.DTOs.BookingDTO
+<h1>Book Event</h1>
+<h3>@Model.EventCategoryName</h3>
+<h4>Price per Seat: @Model.EventPrice</h4>
+<hr />
+<form method="post">
+    <input type="hidden" name="EventCategoryId" value="@Model.EventCategoryId" />
+    <input type="hidden" name="EventCategoryName" value="@Model.EventCategoryName" />
+    <input type="hidden" name="EventPrice" value="@Model.EventPrice" />
+    <input type="hidden" name="UserId" value="0" />
+    <input type="hidden" name="TotalPrice" value="0" />
+    <input type="hidden" name="Status" value="Pending" />
+
+    <div class="form-group">
+        <label>Booking Date & Time</label>
+        <input name="BookingDate" class="form-control" type="datetime-local"
+               value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
+    </div>
+    <div class="form-group">
+        <label>Number of Seats</label>
+        <input name="SeatCount" class="form-control" type="number" min="1" max="100" value="1" />
+    </div>
+    <div class="form-group mt-2">
+        <input type="submit" value="Confirm Booking" class="btn btn-primary" />
+    </div>
+</form>
+<a asp-action="Index">Back to Events</a>
