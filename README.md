@@ -94,10 +94,4 @@ The system follows a clean **layered architecture** (Controller → Service → 
 
 ---
 
-## 👩‍💻 Author
 
-**Lubna Akter**
-CSE Student, American International University–Bangladesh (AIUB)
-📧 lubnaakter995@gmail.com
-🔗 [GitHub](https://github.com/lubna-21)
-"@ | Out-File -FilePath README.md -Encoding utf8
